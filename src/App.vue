@@ -1,21 +1,15 @@
 <template>
   <div>
-    <h1>test axios 二次封装</h1>
+    <router-view></router-view>
   </div>
 </template>
 <script lang="ts" setup>
-import request from "./utils/request";
 import { onMounted } from "vue";
+import { login } from "@/api/user/index";
 onMounted(() => {
-  request({
-    url: "user/login",
-    method: "post",
-    data: {
-      userName: "adimin",
-      password: "111111",
-    },
-  }).then((res) => {
-    console.log(res);
+  login({
+    userName: "adimin",
+    password: "111111",
   });
 });
 </script>
