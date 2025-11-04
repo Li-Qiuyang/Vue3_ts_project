@@ -89,10 +89,10 @@ textarea {
   font-size: inherit;
 }
 
-button,
-html [type="button"],
-[type="reset"],
-[type="submit"] {
+button:not(.el-button),
+html [type="button"]:not(.el-button),
+[type="reset"]:not(.el-button),
+[type="submit"]:not(.el-button) {
   padding: 0;
   border: 0;
   color: inherit;
@@ -100,7 +100,6 @@ html [type="button"],
   -webkit-appearance: button;
   cursor: pointer;
 }
-
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;

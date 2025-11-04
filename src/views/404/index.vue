@@ -1,7 +1,12 @@
 <template>
-  <h1>404</h1>
+  <div class="button-row">
+    <el-button>Default</el-button>
+    <el-button type="primary">Primary</el-button>
+    <el-button type="success">Success</el-button>
+    <el-button type="info">Info</el-button>
+    <el-button type="warning">Warning</el-button>
+    <el-button type="danger">Danger</el-button>
+  </div>
 </template>
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 <style scoped></style>
