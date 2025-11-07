@@ -8,7 +8,11 @@
 //引入设置标题与logo配置文件
 import setting from "@/setting";
 </script>
-
+<script lang="ts">
+export default {
+  name: "Logo",
+};
+</script>
 <style scoped lang="scss">
 .logo {
   width: 100%;
@@ -24,6 +28,7 @@ import setting from "@/setting";
   p {
     font-size: $base-logo-title-fontSize;
     margin-left: 10px;
+    white-space: nowrap;
   }
 }
 </style>
