@@ -1,15 +1,20 @@
 // 统一管理用户相关的接口
 import service from "@/utils/request";
-import type { loginInter, loginResInter } from "@/api/user/type";
+import type { loginFormData, loginResponseData, userInfoReponseData } from "@/api/user/type";
 // 统一管理接口
 enum API {
-  LOGIN_URL = "/user/login",
-  USERINFO_URL = "/user/info",
+  LOGIN_URL = "/admin/acl/index/login",
+  USERINFO_URL = "/admin/acl/index/info",
+  LOGOUT_URL = "/admin/acl/index/logout",
 }
 
-export function login(data: loginInter) {
-  return service.post<any, loginResInter>(API.LOGIN_URL, data);
-}
+// 登录
+// <any, any> 第二个any约束返回值类型
+export const login = (data: loginFormData) =>
+  service.post<any, loginResponseData>(API.LOGIN_URL, data);
 
 // 获取用户信息
-export const reqUserInfo = () => service.get(API.USERINFO_URL);
+export const reqUserInfo = () => service.get<any, userInfoReponseData>(API.USERINFO_URL);
+
+// 退出登录
+export const logout = () => service.post<any, any>(API.LOGOUT_URL);

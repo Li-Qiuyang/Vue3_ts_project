@@ -2,6 +2,8 @@
 import axios from "axios";
 import { ElMessage } from "element-plus";
 
+import useUserStore from "@/store/user";
+
 // 创建axios实例
 const service = axios.create({
   baseURL: "/api", // API基础URL
@@ -10,8 +12,9 @@ const service = axios.create({
 
 // 请求拦截器
 service.interceptors.request.use((config) => {
+  const userStore = useUserStore();
   // config配置对象，headers属性请求头，经常给服务器端携带公共参数
-  //   console.log(config);
+  config.headers.token = userStore.token;
   return config;
 });
 

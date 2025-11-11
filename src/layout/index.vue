@@ -61,7 +61,7 @@ export default {
     color: white;
     height: 100vh;
     background-color: $base-menu-background;
-    transition: all 0.3s;
+    transition: all 0.5s;
     &.fold {
       width: $base-menu-min-width;
     }
@@ -76,12 +76,16 @@ export default {
     }
   }
   .layout_tabbar {
-    position: fixed;
-    width: calc(100% - $base-menu-width);
-    height: $base-tabbar-height;
+    position: absolute;
     top: 0;
     left: $base-menu-width;
-    transition: all 0.3s;
+    // background-color: #fff;
+    width: calc(100vw - $base-menu-width);
+    height: $base-tabbar-height;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 6%);
+    z-index: 999;
+    padding: 0 20px;
+    transition: all 0.5s ease;
     &.fold {
       left: $base-menu-min-width;
       width: calc(100% - $base-menu-min-width);
@@ -94,8 +98,9 @@ export default {
     top: $base-tabbar-height;
     padding: 20px;
     left: $base-menu-width;
+    box-sizing: border-box;
     overflow: auto;
-    transition: all 0.3s;
+    transition: all 0.5s;
     &.fold {
       left: $base-menu-min-width;
       width: calc(100% - $base-menu-min-width);

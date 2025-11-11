@@ -37,14 +37,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .fade-enter-from {
   opacity: 0;
   transform: scale(0);
 }
 
 .fade-enter-active {
-  transition: all 0.3s;
+  transition: all 1s;
 }
 
 .fade-enter-to {

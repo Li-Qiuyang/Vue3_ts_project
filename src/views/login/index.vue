@@ -1,13 +1,17 @@
 <template>
   <div class="login">
     <el-row>
-      <el-col :span="12" :xs="0"></el-col>
-      <el-col :span="12" :xs="24">
+      <el-col :span="8" :xs="24">
         <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms">
-          <h1>Hello</h1>
-          <h2>欢迎来到后台管理系统！</h2>
+          <h3 class="title">欢迎来到后台管理系统！</h3>
+          <h2 class="signup">Sign Up</h2>
           <el-form-item prop="username">
-            <el-input v-model="loginForm.username" placeholder="请输入用户名" :prefix-icon="User" />
+            <el-input
+              v-model="loginForm.username"
+              placeholder="请输入用户名"
+              :prefix-icon="User"
+              class="custom-input"
+            />
           </el-form-item>
           <el-form-item prop="password">
             <el-input
@@ -16,6 +20,7 @@
               placeholder="请输入密码"
               :prefix-icon="Lock"
               show-password
+              class="custom-input"
             />
           </el-form-item>
           <el-button
@@ -24,10 +29,14 @@
             type="primary"
             size="default"
             @click="login"
-            >登录</el-button
+            >Login in</el-button
           >
+          <el-radio-group v-model="rememberMe">
+            <el-radio label="true">Remember me</el-radio>
+          </el-radio-group>
         </el-form>
       </el-col>
+      <el-col :span="16" :xs="0"></el-col>
     </el-row>
   </div>
 </template>
@@ -36,7 +45,7 @@ import { ref } from "vue";
 import { User, Lock } from "@element-plus/icons-vue";
 import { ElNotification } from "element-plus";
 import useUserStore from "@/store/user";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import getTime from "@/utils/time";
 let loginForms = ref();
 
@@ -63,6 +72,8 @@ const rules = {
 };
 
 let router = useRouter();
+let route = useRoute();
+const rememberMe = ref(false);
 const userStore = useUserStore();
 let loginForm = ref({
   username: "admin",
@@ -72,19 +83,21 @@ let loading = ref(false);
 const login = async () => {
   await loginForms.value.validate(); //确保表单校验完成之后再发请求
   loading.value = true;
-  let res = await userStore.userLogin(loginForm.value);
-  loading.value = false;
-  if (res.ok) {
-    router.push("/");
+  try {
+    await userStore.userLogin(loginForm.value);
+    loading.value = false;
+
+    router.push((route.query.redirect as string) || "/");
     ElNotification({
-      message: "欢迎回来",
-      title: `HI！${getTime()}好`,
+      title: `HI, ${loginForm.value.username}！`,
+      message: `${getTime()}好, 欢迎回来`,
       type: "success",
     });
-  } else {
+  } catch (error: any) {
+    loading.value = false;
     ElNotification({
+      title: error.message,
       type: "error",
-      message: res.msg,
     });
   }
 };
@@ -94,28 +107,34 @@ const login = async () => {
 .login {
   width: 100%;
   height: 100vh;
-  background: url("@/assets/images/background.jpg") no-repeat;
+  background: url("@/assets/images/bg.jpg") no-repeat;
   background-size: cover;
 }
 .login_form {
   width: 80%;
-  top: 30vh;
+  top: 2vh;
   position: relative;
-  background: url("@/assets/images/login_form.png");
   background-size: cover;
-  padding: 40px;
-  h1 {
-    color: #fff;
-    font-size: 40px;
+  padding: 60px;
+  .title {
+    color: #76aff0;
+    margin-bottom: 170px;
   }
-  h2 {
-    margin: 20px 0;
-    color: #fff;
-    font-size: 20px;
+  .signup {
+    font-weight: bold;
+    font-size: 42px;
+    margin: 60px 0;
   }
+
   button {
-    width: 100%;
-    color: #fff;
+    width: 50%;
+    height: 40px;
+    // color: #fff;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    background: linear-gradient(45deg, #1f6aed, #3d9ff6);
   }
 }
 </style>
