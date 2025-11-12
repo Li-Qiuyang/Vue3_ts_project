@@ -14,13 +14,13 @@
     </div>
     <div class="tabbar-right">
       <el-tooltip content="刷新" placement="bottom" effect="light">
-        <el-button size="small" :icon="Refresh" circle @click="refresh"></el-button>
+        <el-button size="default" :icon="Refresh" circle @click="refresh"></el-button>
       </el-tooltip>
       <el-tooltip :content="isFull ? '退出全屏' : '全屏'" placement="bottom" effect="light">
-        <el-button size="small" :icon="FullScreen" circle @click="fullScreen"></el-button>
+        <el-button size="default" :icon="FullScreen" circle @click="fullScreen"></el-button>
       </el-tooltip>
       <el-tooltip content="设置" placement="bottom" effect="light">
-        <el-button size="small" :icon="Setting" circle></el-button>
+        <el-button size="default" :icon="Setting" circle></el-button>
       </el-tooltip>
       <img :src="userStore.avatar" alt="" />
       <el-dropdown>
@@ -100,8 +100,8 @@ const fullScreen = () => {
     display: flex;
     align-items: center;
     img {
-      width: 25px;
-      height: 25px;
+      width: 40px;
+      height: 40px;
       margin: 0 10px;
       border-radius: 50%;
     }

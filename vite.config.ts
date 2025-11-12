@@ -1,8 +1,8 @@
 import { fileURLToPath, URL } from "node:url";
-
+import path from "path";
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
-import vueDevTools from "vite-plugin-vue-devtools";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import { viteMockServe } from "vite-plugin-mock";
 // https://vite.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -23,12 +23,16 @@ export default defineConfig(({ command, mode }) => {
     },
     plugins: [
       vue(),
-      vueDevTools(),
       viteMockServe({
         mockPath: "mock",
         localEnabled: command === "serve",
       }),
+      createSvgIconsPlugin({
+        iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
+        symbolId: "icon-[name]",
+      }),
     ],
+
     //代理跨域
     server: {
       proxy: {

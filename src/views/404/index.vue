@@ -1,12 +1,13 @@
 <template>
-  <div class="button-row">
-    <el-button>Default</el-button>
-    <el-button type="primary">Primary</el-button>
-    <el-button type="success">Success</el-button>
-    <el-button type="info">Info</el-button>
-    <el-button type="warning">Warning</el-button>
-    <el-button type="danger">Danger</el-button>
-  </div>
+  <div class="container"></div>
 </template>
 <script lang="ts" setup></script>
-<style scoped></style>
+<style scoped lang="scss">
+.container {
+  background: url("@/assets/images/error_images/404.png") no-repeat center center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
