@@ -26,4 +26,8 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 import SvgIcon from "@/components/svgIcon/index.vue";
 app.component("SvgIcon", SvgIcon);
 
+// 全局组件
+import Category from "@/components/Category/index.vue";
+app.component("Category", Category);
+
 app.mount("#app");

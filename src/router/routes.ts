@@ -1,7 +1,4 @@
 // 向外暴露配置路由(常量路由)
-
-import component from "element-plus/es/components/tree-select/src/tree-select-option.mjs";
-
 export const constRoute = [
   // 登录页
   {

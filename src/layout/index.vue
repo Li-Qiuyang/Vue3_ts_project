@@ -72,6 +72,20 @@ export default {
 
       .el-menu {
         border-right: none;
+
+        // 折叠状态下的样式
+        &.el-menu--collapse {
+          background-color: $base-menu-background;
+
+          .el-menu-item,
+          .el-sub-menu__title {
+            background-color: $base-menu-background;
+
+            &:hover {
+              background-color: lighten($base-menu-background, 10%) !important;
+            }
+          }
+        }
       }
     }
   }

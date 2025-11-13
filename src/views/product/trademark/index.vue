@@ -19,16 +19,32 @@
         </el-table-column>
         <el-table-column label="操作">
           <template #="{ row, index }">
-            <el-button type="primary" size="small" icon="edit">编辑</el-button>
-            <el-button type="danger" size="small" icon="delete" @click="deleteTradeMark(row.id)"
-              >删除</el-button
+            <el-button type="primary" size="small" icon="edit" @click="editTradeMark(row)"
+              >编辑</el-button
             >
+            <el-popconfirm
+              width="200"
+              icon="delete"
+              :title="`确定要删除${row.tmName}吗？`"
+              placement="bottom"
+              @confirm="deleteTradeMark(row.id)"
+            >
+              <template #reference>
+                <el-button type="danger" size="small" icon="delete">删除</el-button>
+              </template>
+            </el-popconfirm>
           </template>
         </el-table-column>
       </el-table>
 
-      <el-dialog v-model="dialogFormVisible" title="添加品牌" width="800" draggable modal>
-        <el-form :model="form" :rules="rules">
+      <el-dialog
+        v-model="dialogFormVisible"
+        :title="isAdd ? '添加品牌' : '编辑品牌'"
+        width="600"
+        draggable
+        modal
+      >
+        <el-form :model="form" :rules="rules" label-width="auto" style="width: 400px" ref="formRef">
           <el-form-item label="品牌名称" prop="tmName">
             <el-input v-model="form.tmName" autocomplete="off" />
           </el-form-item>
@@ -37,6 +53,7 @@
             <el-upload
               class="avatar-uploader"
               action="/api/admin/product/fileUpload"
+              :headers="headers"
               :show-file-list="false"
               :on-success="handleSuccess"
               :before-upload="beforeUpload"
@@ -75,35 +92,67 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
-import type { Records } from "@/api/product/trademark/type";
+import { ref, onMounted, nextTick } from "vue";
+import type { Records, TradeMark } from "@/api/product/trademark/type";
 import { ElMessage } from "element-plus";
-import { reqGetTrademarkList, reqDeleteTrademark } from "@/api/product/trademark";
+import {
+  reqGetTrademarkList,
+  reqDeleteTrademark,
+  reqAddTrademark,
+  reqEditTrademark,
+} from "@/api/product/trademark";
 import type { UploadProps } from "element-plus";
+import useUserStore from "@/store/user";
+
+let formRef = ref();
 
 // 分页相关
 let currentPage = ref<number>(1);
 let pageSize = ref<number>(10);
 let total = ref<number>(0);
+
+const userStore = useUserStore();
+const headers = { Token: userStore.token };
+
+// 品牌列表
 let trademarkList = ref<Records>([]);
 let dialogFormVisible = ref<boolean>(false);
-let form = ref({
+let isAdd = ref<boolean>(true);
+
+let form = ref<TradeMark>({
   tmName: "",
   logoUrl: "",
 });
+
+// 自定义名字校验规则
+const validateName = (rules: any, value: any, callback: any) => {
+  if (value.length <= 1) {
+    callback(new Error("品牌名称不能少于2个字符"));
+  } else {
+    callback();
+  }
+};
 let rules = {
-  tmName: [{ required: true, message: "品牌名称不能为空", trigger: "blur" }],
+  tmName: [{ required: true, validator: validateName, trigger: "blur" }],
   logoUrl: [{ required: true, message: "品牌LOGO不能为空", trigger: "blur" }],
 };
 const getTradeMarkList = async () => {
   let res = await reqGetTrademarkList(currentPage.value, pageSize.value);
-  console.log(res);
+  // console.log(res);
   total.value = res.data.total;
   trademarkList.value = res.data.records;
 };
 
 const addTradeMark = () => {
+  form.value.tmName = "";
+  form.value.logoUrl = "";
+  form.value.id = 0;
   dialogFormVisible.value = true;
+  isAdd.value = true;
+  nextTick(() => {
+    formRef.value.clearValidate("tmName");
+    formRef.value.clearValidate("logoUrl");
+  });
 };
 
 onMounted(async () => {
@@ -112,19 +161,63 @@ onMounted(async () => {
 const changePage = () => {
   getTradeMarkList();
 };
+
+// 删除品牌
 const deleteTradeMark = async (id: number) => {
   let res = await reqDeleteTrademark(id);
-  console.log(res);
+  if (res.code == 200) {
+    ElMessage.success("删除成功！");
+    getTradeMarkList();
+  } else {
+    ElMessage.error("删除失败！");
+  }
 };
 const cancel = () => {
   dialogFormVisible.value = false;
-  form.value.tmName = "";
-  form.value.logoUrl = "";
 };
-const confirm = async () => {};
+
+// 编辑品牌
+const editTradeMark = (row: any) => {
+  isAdd.value = false;
+  dialogFormVisible.value = true;
+  // form.value.tmName = row.tmName;
+  // form.value.logoUrl = row.logoUrl;
+  // form.value.id = row.id;
+  Object.assign(form.value, row);
+
+  // 清空校验提示
+  nextTick(() => {
+    formRef.value.clearValidate("tmName");
+    formRef.value.clearValidate("logoUrl");
+  });
+};
+
+// 确认添加/修改
+const confirm = async () => {
+  // 校验表单数据
+  await formRef.value.validate();
+  let res;
+  if (isAdd.value) {
+    res = await reqAddTrademark(form.value);
+  } else {
+    res = await reqEditTrademark(form.value);
+    console.log(res);
+  }
+  dialogFormVisible.value = false;
+  if (res.code == 200) {
+    ElMessage.success(isAdd.value ? "添加成功！" : "编辑成功！");
+    getTradeMarkList();
+  } else {
+    ElMessage.error(isAdd.value ? "添加失败！" : "编辑失败！");
+  }
+};
+
+// 图片上传成功处理
 const handleSuccess: UploadProps["onSuccess"] = (response, uploadFile) => {
   console.log(response, uploadFile);
   form.value.logoUrl = response.data;
+  // 校验通过后，清空校验提示
+  formRef.value.clearValidate("logoUrl");
 };
 
 // 图片上传之前校验

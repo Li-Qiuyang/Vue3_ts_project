@@ -3,7 +3,6 @@ import { defineStore } from "pinia";
 import { login, reqUserInfo, logout } from "@/api/user/index";
 import type { loginFormData } from "@/api/user/type";
 import type { userState } from "./types/type";
-import { ElMessage } from "element-plus";
 
 const useUserStore = defineStore("user", {
   state: (): userState => {

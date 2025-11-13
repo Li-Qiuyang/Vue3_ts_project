@@ -5,11 +5,9 @@ export interface ResponseData {
 }
 
 export interface TradeMark {
-  createTime: string;
   id?: number;
   tmName: string;
   logoUrl: string;
-  updateTime: string;
 }
 
 export type Records = TradeMark[];
