@@ -22,7 +22,7 @@ export default {
   padding-top: 10px;
   margin-left: 15px;
   img {
-    width: 40px;
+    width: 48px;
     height: 40px;
   }
   p {

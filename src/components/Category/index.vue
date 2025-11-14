@@ -1,64 +1,65 @@
 <template>
   <!-- 行内表单 inline -->
-  <el-form inline>
-    <el-form-item label="一级分类">
-      <el-select
-        v-model="categoryStore.firstValue"
-        placeholder="请选择"
-        style="width: 240px"
-        clearable
-        effect="light"
-        @change="getSecondCategory"
-        :disabled="!scene"
-      >
-        <el-option
-          v-for="item in categoryStore.firstOptions"
-          :key="item.id"
-          :label="item.name"
-          :value="item.id"
-        />
-      </el-select>
-    </el-form-item>
-    <el-form-item label="二级分类">
-      <el-select
-        v-model="categoryStore.secondValue"
-        placeholder="请选择"
-        style="width: 240px"
-        clearable
-        effect="light"
-        @change="getThirdCategory"
-        :disabled="!scene"
-      >
-        <el-option
-          v-for="item in categoryStore.secondOptions"
-          :key="item.id"
-          :label="item.name"
-          :value="item.id"
-        />
-      </el-select>
-    </el-form-item>
-    <el-form-item label="三级分类">
-      <el-select
-        v-model="categoryStore.thirdValue"
-        placeholder="请选择"
-        style="width: 240px"
-        clearable
-        effect="light"
-        :disabled="!scene"
-      >
-        <el-option
-          v-for="item in categoryStore.thirdOptions"
-          :key="item.id"
-          :label="item.name"
-          :value="item.id"
-        />
-      </el-select>
-    </el-form-item>
-  </el-form>
+  <el-card>
+    <el-form inline>
+      <el-form-item label="一级分类">
+        <el-select
+          v-model="categoryStore.firstValue"
+          placeholder="请选择"
+          style="width: 240px"
+          clearable
+          effect="light"
+          @change="getSecondCategory"
+          :disabled="!scene"
+        >
+          <el-option
+            v-for="item in categoryStore.firstOptions"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="二级分类">
+        <el-select
+          v-model="categoryStore.secondValue"
+          placeholder="请选择"
+          style="width: 240px"
+          clearable
+          effect="light"
+          @change="getThirdCategory"
+          :disabled="!scene"
+        >
+          <el-option
+            v-for="item in categoryStore.secondOptions"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="三级分类">
+        <el-select
+          v-model="categoryStore.thirdValue"
+          placeholder="请选择"
+          style="width: 240px"
+          clearable
+          effect="light"
+          :disabled="!scene"
+        >
+          <el-option
+            v-for="item in categoryStore.thirdOptions"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id"
+          />
+        </el-select>
+      </el-form-item>
+    </el-form>
+  </el-card>
 </template>
 <script lang="ts" setup>
 import useCategoryStore from "@/store/category";
-import { de } from "element-plus/es/locales.mjs";
 const categoryStore = useCategoryStore();
 
 let props = defineProps({

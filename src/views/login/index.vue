@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="8" :xs="24">
         <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms">
-          <h3 class="title">欢迎来到后台管理系统！</h3>
+          <h3 class="title">欢迎来到云端商管平台！</h3>
           <h2 class="signup">Sign Up</h2>
           <el-form-item prop="username">
             <el-input

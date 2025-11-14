@@ -1,9 +1,6 @@
 <template>
   <div>
-    <el-card>
-      <!-- 封装全局组件 -->
-      <Category :scene="scene"></Category>
-    </el-card>
+    <Category :scene="scene"></Category>
     <el-card style="margin-top: 20px">
       <div v-show="scene">
         <el-button type="primary" icon="plus" :disabled="!categoryStore.thirdValue" @click="addAttr"
