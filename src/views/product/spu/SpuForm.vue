@@ -6,7 +6,12 @@
       </el-form-item>
       <el-form-item label="SPU名称" style="width: 50%">
         <el-select placeholder="请选择品牌" v-model="spuForm.tmId">
-          <el-option></el-option>
+          <el-option
+            v-for="item in trademarkList"
+            :key="item.id"
+            :label="item.tmName"
+            :value="item.id"
+          ></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="SPU描述">
@@ -87,6 +92,10 @@ import { ref, onMounted } from "vue";
 import useCategoryStore from "@/store/category";
 import { getSaleList } from "@/api/product/spu/index";
 import type { SPUSaleAttrList } from "@/api/product/spu/type";
+import { getTrademarkList } from "@/api/product/spu/index";
+import type { trademarkList } from "@/api/product/spu/type";
+
+let trademarkList = ref<trademarkList>([]);
 let categoryStore = useCategoryStore();
 
 let spuForm = ref({
@@ -99,7 +108,7 @@ let spuForm = ref({
     },
   ],
   spuName: "",
-  tmId: 0,
+  tmId: "",
   spuSaleAttrList: <any>[],
 });
 let saleAttrs = ref<SPUSaleAttrList>([]);
@@ -167,9 +176,14 @@ const cancel = () => {
 };
 
 onMounted(async () => {
-  let res = await getSaleList();
+  let res = await getTrademarkList();
+  console.log(res);
   if (res.code == 200) {
-    saleAttrs.value = res.data;
+    trademarkList.value = res.data;
+  }
+  let res2 = await getSaleList();
+  if (res2.code == 200) {
+    saleAttrs.value = res2.data;
   }
 });
 </script>
