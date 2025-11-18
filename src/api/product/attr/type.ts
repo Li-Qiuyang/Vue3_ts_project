@@ -43,6 +43,7 @@ export type attrValueList = attrValue[];
 
 export interface attrList {
   attrName: string;
+  attrId?: number;
   attrValueList: attrValueList;
   categoryId: number;
   categoryLevel: number;

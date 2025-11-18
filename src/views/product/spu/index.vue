@@ -22,7 +22,7 @@
         <el-table-column label="操作" width="340" align="center">
           <template #="{ row, $index }">
             <el-button type="primary" icon="plus" title="添加SKU" @click="addSku(row)"></el-button>
-            <el-button type="primary" icon="edit" title="编辑SPU" @click="editSPU(row)"></el-button>
+            <el-button type="warning" icon="edit" title="编辑SPU" @click="editSPU(row)"></el-button>
             <el-button
               type="info"
               icon="view"
@@ -80,7 +80,7 @@
     </el-card>
   </div>
 </template>
-<script lang="ts" setup>
+<script lang="ts" setup name="Spu">
 import { onMounted, watch, ref, onBeforeUnmount } from "vue";
 import useCategoryStore from "@/store/category";
 import { getSpuList, removeSPU, reqSkuList } from "@/api/product/spu";
@@ -140,6 +140,11 @@ const deleteSPU = async (id: number) => {
   if (res.code == 200) {
     ElMessage.success("删除成功");
     getSPUList();
+  } else {
+    ElMessage({
+      type: "error",
+      message: "删除SPU失败",
+    });
   }
 };
 
@@ -184,5 +189,11 @@ onBeforeUnmount(() => {
   categoryStore.secondOptions = [];
   categoryStore.firstOptions = [];
 });
+</script>
+
+<script lang="ts">
+export default {
+  name: "Spu",
+};
 </script>
 <style scoped lang="scss"></style>

@@ -110,3 +110,33 @@ export interface UpdateSpuParams {
 export interface SkuSaleAttr extends SaleAttr {
   saleIdAndValueId?: string;
 }
+
+import type { attrList } from "@/api/product/attr/type";
+// SPU平台属性
+export interface SkuAttr extends attrList {
+  saleIdAndValueId?: string;
+}
+
+export interface SkuAttrValue {
+  attrId: number; //平台属性id
+  valueId: number; //属性值的id
+}
+
+export interface SkuSaleAttrValue {
+  saleAttrId: number; //销售属性id
+  saleAttrValueId: number; //销售属性值id
+}
+
+export interface SkuData {
+  id?: number | string;
+  category3Id: number | string;
+  spuId: number | string;
+  tmId: number | string;
+  skuName: string;
+  price: number | string;
+  weight: number | string;
+  skuDesc: string;
+  skuAttrValueList: SkuAttrValue[];
+  skuSaleAttrValueList: SkuSaleAttrValue[];
+  skuDefaultImg: string;
+}

@@ -7,6 +7,7 @@ import type {
   SpuHasImg,
   UpdateSpuRes,
   UpdateSpuParams,
+  SkuData,
 } from "./type";
 enum API {
   // 获取整个项目全部的销售属性【颜色、版本、尺码】
@@ -68,3 +69,6 @@ export const removeSPU = (id: number) =>
 // 获取SKU数据
 export const reqSkuList = (spuId: number | string) =>
   request.get<any, any>(API.SKUINFO_URL + spuId);
+
+// 新增一个SKU
+export const addSKU = (data: SkuData) => request.post<any, any>(API.ADDSKU_URL, data);
