@@ -10,7 +10,7 @@
           clearable
           effect="light"
           @change="getSecondCategory"
-          :disabled="!scene"
+          :disabled="scene == 1"
         >
           <el-option
             v-for="item in categoryStore.firstOptions"
@@ -28,7 +28,7 @@
           clearable
           effect="light"
           @change="getThirdCategory"
-          :disabled="!scene"
+          :disabled="scene == 1"
         >
           <el-option
             v-for="item in categoryStore.secondOptions"
@@ -45,7 +45,7 @@
           style="width: 240px"
           clearable
           effect="light"
-          :disabled="!scene"
+          :disabled="scene == 1"
         >
           <el-option
             v-for="item in categoryStore.thirdOptions"

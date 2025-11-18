@@ -11,7 +11,7 @@ export interface SPUData {
   spuImageList: null;
   spuName: string;
   spuSaleAttrList: null;
-  tmId: number;
+  tmId: number | string;
 }
 
 export interface SPUSaleAttr {
@@ -87,4 +87,26 @@ export interface SaleAttr {
 // SPU 已有的销售属性接口返回数据ts类型
 export interface SaleAttrResponseData extends commonRes {
   data: SaleAttr[];
+}
+
+// 更新已有的SPU接口返回数据ts类型
+export interface UpdateSpuRes extends commonRes {
+  data: string;
+}
+
+// 更新spu的参数类型
+export interface UpdateSpuParams {
+  baseSaleAttrId?: number;
+  id?: number;
+  spuName: string;
+  tmId: number | string;
+  category3Id: number | string;
+  description: string;
+  spuImageList: SpuImg[];
+  spuSaleAttrList: SaleAttr[];
+}
+
+// SPU 销售属性加个字段用于获取SKU销售属性
+export interface SkuSaleAttr extends SaleAttr {
+  saleIdAndValueId?: string;
 }

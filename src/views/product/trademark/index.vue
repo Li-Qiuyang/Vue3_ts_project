@@ -14,7 +14,7 @@
         <el-table-column label="品牌名称" prop="tmName"></el-table-column>
         <el-table-column label="品牌LOGO">
           <template #="{ row, index }">
-            <img :src="row.logoUrl" alt="未上传品牌LOGO" width="50px" height="50px" />
+            <img :src="row.logoUrl" alt="未上传品牌LOGO" width="80px" />
           </template>
         </el-table-column>
         <el-table-column label="操作">
@@ -108,7 +108,7 @@ let formRef = ref();
 
 // 分页相关
 let currentPage = ref<number>(1);
-let pageSize = ref<number>(10);
+let pageSize = ref<number>(8);
 let total = ref<number>(0);
 
 const userStore = useUserStore();

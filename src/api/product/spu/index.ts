@@ -5,6 +5,8 @@ import type {
   trademarkRes,
   SaleAttrResponseData,
   SpuHasImg,
+  UpdateSpuRes,
+  UpdateSpuParams,
 } from "./type";
 enum API {
   // 获取整个项目全部的销售属性【颜色、版本、尺码】
@@ -29,6 +31,7 @@ enum API {
   REMOVESPU_URL = "/admin/product/deleteSpu/",
 }
 
+// 获取整个项目全部的销售属性【颜色、版本、尺码】
 export const getSaleList = () => request.get<any, SPUSaleAttrRes>(API.GET_SALELIST);
 
 // 获取某一个三级分类下已有的SPU数据
@@ -49,3 +52,19 @@ export const getSpuSaleAttrList = (id: number) =>
 // 获取某个SPU下的全部的已有的售卖商品的图片数据
 export const getSpuImageList = (id: number) =>
   request.get<any, SpuHasImg>(`${API.GET_SPU_IMAGE_LIST}/${id}`);
+
+// 更新已有的SPU
+export const updateSpu = (data: UpdateSpuParams) =>
+  request.post<any, UpdateSpuRes>(API.UPDATESPU_URL, data);
+
+//  新增SPU
+export const addSPU = (data: UpdateSpuParams) =>
+  request.post<any, UpdateSpuRes>(API.ADDSPU_URL, data);
+
+// 删除SPU
+export const removeSPU = (id: number) =>
+  request.delete<any, UpdateSpuRes>(API.REMOVESPU_URL + `${id}`);
+
+// 获取SKU数据
+export const reqSkuList = (spuId: number | string) =>
+  request.get<any, any>(API.SKUINFO_URL + spuId);

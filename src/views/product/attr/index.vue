@@ -2,7 +2,7 @@
   <div>
     <Category :scene="scene"></Category>
     <el-card style="margin-top: 20px">
-      <div v-show="scene">
+      <div v-show="!scene">
         <el-button type="primary" icon="plus" :disabled="!categoryStore.thirdValue" @click="addAttr"
           >添加平台属性</el-button
         >
@@ -34,7 +34,7 @@
           </el-table-column>
         </el-table>
       </div>
-      <div v-show="!scene">
+      <div v-show="scene">
         <el-form inline :model="attrForm" :rules="attrFormRules" ref="attrFormRef">
           <el-form-item label="属性名称" prop="attrName">
             <el-input
@@ -111,7 +111,7 @@ import { ElMessage } from "element-plus";
 import type { attrValue, attrList } from "@/api/product/attr/type";
 
 const categoryStore = useCategoryStore();
-let scene = ref(1);
+let scene = ref(0);
 // 表单实例
 const attrFormRef = ref();
 let EditFlag = ref(false);
@@ -127,13 +127,13 @@ let attrForm = ref({
 
 // 添加属性
 const addAttr = () => {
-  scene.value = 0;
-  Object.assign(attrForm.value, {
+  scene.value = 1;
+  attrForm.value = {
     attrName: "",
     attrValueList: <any>[],
     categoryId: categoryStore.thirdValue,
     categoryLevel: 3,
-  });
+  };
 };
 
 // 获取属性列表
@@ -193,7 +193,7 @@ const checkAttrName = () => {
 // 编辑属性
 const editAttr = async (row: any) => {
   console.log(row);
-  scene.value = 0;
+  scene.value = 1;
 
   // 深拷贝row对象，避免直接修改row对象
   Object.assign(attrForm.value, JSON.parse(JSON.stringify(row)));
@@ -207,7 +207,7 @@ const deleteAttrValue = (index: number) => {
 
 // 取消添加属性
 const cancel = () => {
-  scene.value = 1;
+  scene.value = 0;
   attrFormRef.value.clearValidate();
 };
 
@@ -264,11 +264,12 @@ const saveAttrInfo = async () => {
     // 去掉isEdit
     delete item.isEdit;
   });
+  console.log(attrForm.value);
   let res = await addEditAttrInfo(attrForm.value);
   if (res.code == 200) {
     ElMessage.success(attrForm.value.hasOwnProperty("id") ? "修改成功！" : "添加成功！");
 
-    scene.value = 1;
+    scene.value = 0;
     // 刷新属性列表
     await getAttrInfoList();
   } else {

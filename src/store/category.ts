@@ -20,7 +20,6 @@ export default defineStore("Category", () => {
   let secondValue = ref();
   let thirdValue = ref();
   let attrList = ref<attrList[]>([]);
-  let scene = ref(0);
 
   const getFirstCategory = async () => {
     let res = await reqGetFirstCategoary();
@@ -50,7 +49,6 @@ export default defineStore("Category", () => {
     secondValue,
     thirdValue,
     attrList,
-    scene,
     getFirstCategory,
     getSecondCategory,
     getThirdCategory,
