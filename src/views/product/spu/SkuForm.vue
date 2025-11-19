@@ -218,11 +218,22 @@ const submitForm = async () => {
     return prev;
   }, []);
 
-  console.log(skuParams.value);
   let res = await addSKU(skuParams.value);
   console.log(res);
   if (res.code == 200) {
     ElMessage.success("添加成功");
+    Object.assign(skuParams.value, {
+      category3Id: "",
+      spuId: "",
+      tmId: "",
+      skuName: "",
+      price: "",
+      weight: "",
+      skuDesc: "",
+      skuAttrValueList: [],
+      skuSaleAttrValueList: [],
+      skuDefaultImg: "",
+    });
     emits("changeScene", 0);
   } else {
     ElMessage({
