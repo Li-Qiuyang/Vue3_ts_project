@@ -60,7 +60,7 @@
           <el-table-column label="SKU重量" prop="weight" align="center"></el-table-column>
           <el-table-column label="SKU图片" align="center">
             <template #="{ row, $index }">
-              <img :src="row.skuDefaultImg" fit="fill" />
+              <img :src="row.skuDefaultImg" style="width: 80%; height: 80%" />
             </template>
           </el-table-column>
         </el-table>

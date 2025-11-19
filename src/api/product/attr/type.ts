@@ -1,4 +1,4 @@
-interface commonResponse {
+export interface commonResponse {
   code: number;
   ok: boolean;
   message: string;
