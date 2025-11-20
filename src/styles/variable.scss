@@ -14,3 +14,12 @@ $base-menu-logo-height: 60px;
 
 //左侧菜单logo右侧文字大小
 $base-logo-title-fontSize: 20px;
+
+// 添加CSS自定义属性，支持动态主题色
+:root {
+  // 菜单主题色
+  --menu-text-color: #fff;
+  --menu-active-text-color: yellowgreen;
+  --menu-hover-bg-color: lighten($base-menu-background, 10%);
+  --menu-active-bg-color: lighten($base-menu-background, 15%);
+}

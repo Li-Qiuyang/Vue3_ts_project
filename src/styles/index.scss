@@ -58,16 +58,16 @@
 
   .el-menu-item,
   .el-sub-menu__title {
-    color: #fff !important;
+    color: var(--menu-text-color) !important;
     background-color: $base-menu-background !important;
 
     &:hover {
-      background-color: lighten($base-menu-background, 10%) !important;
+      background-color: var(--menu-hover-bg-color) !important;
     }
 
     &.is-active {
-      background-color: lighten($base-menu-background, 15%) !important;
-      color: yellowgreen !important;
+      background-color: var(--menu-active-bg-color) !important;
+      color: var(--menu-active-text-color) !important;
     }
   }
 
@@ -77,15 +77,15 @@
 
       .el-menu-item {
         background-color: $base-menu-background !important;
-        color: #fff !important;
+        color: var(--menu-text-color) !important;
 
         &:hover {
-          background-color: lighten($base-menu-background, 10%) !important;
+          background-color: var(--menu-hover-bg-color) !important;
         }
 
         &.is-active {
-          background-color: lighten($base-menu-background, 15%) !important;
-          color: yellowgreen !important;
+          background-color: var(--menu-active-bg-color) !important;
+          color: var(--menu-active-text-color) !important;
         }
       }
     }
@@ -99,13 +99,12 @@
       background-color: $base-menu-background !important;
 
       &:hover {
-        background-color: lighten($base-menu-background, 10%) !important;
+        background-color: var(--menu-hover-bg-color) !important;
       }
     }
   }
 }
 
-// 弹出式子菜单样式 - 只影响菜单相关的弹出层
 .el-popper.is-pure {
   // 只包含菜单的弹出层
   &:has(.el-menu) {
@@ -118,15 +117,15 @@
 
       .el-menu-item {
         background-color: $base-menu-background !important;
-        color: #fff !important;
+        color: var(--menu-text-color) !important;
 
         &:hover {
-          background-color: lighten($base-menu-background, 10%) !important;
+          background-color: var(--menu-hover-bg-color) !important;
         }
 
         &.is-active {
-          background-color: lighten($base-menu-background, 15%) !important;
-          color: yellowgreen !important;
+          background-color: var(--menu-active-bg-color) !important;
+          color: var(--menu-active-text-color) !important;
         }
       }
     }
@@ -140,15 +139,15 @@
 
   .el-menu-item {
     background-color: $base-menu-background !important;
-    color: #fff !important;
+    color: var(--menu-text-color) !important;
 
     &:hover {
-      background-color: lighten($base-menu-background, 10%) !important;
+      background-color: var(--menu-hover-bg-color) !important;
     }
 
     &.is-active {
-      background-color: lighten($base-menu-background, 15%) !important;
-      color: yellowgreen !important;
+      background-color: var(--menu-active-bg-color) !important;
+      color: var(--menu-active-text-color) !important;
     }
   }
 }
@@ -164,15 +163,15 @@
 
       .el-menu-item {
         background-color: $base-menu-background !important;
-        color: #fff !important;
+        color: var(--menu-text-color) !important;
 
         &:hover {
-          background-color: lighten($base-menu-background, 10%) !important;
+          background-color: var(--menu-hover-bg-color) !important;
         }
 
         &.is-active {
-          background-color: lighten($base-menu-background, 15%) !important;
-          color: yellowgreen !important;
+          background-color: var(--menu-active-bg-color) !important;
+          color: var(--menu-active-text-color) !important;
         }
       }
     }

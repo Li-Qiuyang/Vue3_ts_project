@@ -16,7 +16,7 @@ export default {
 <style scoped lang="scss">
 .logo {
   width: 100%;
-  height: $base-menu-logo-height;
+  height: $base-tabbar-height;
   display: flex;
   align-items: center;
   padding-top: 10px;

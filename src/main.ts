@@ -1,7 +1,8 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import ElementPlus from "element-plus";
-
+// 暗黑模式
+import "element-plus/theme-chalk/dark/css-vars.css";
 // @ts-ignore
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 import "element-plus/dist/index.css";

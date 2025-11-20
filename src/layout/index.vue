@@ -7,14 +7,7 @@
       <!-- 滚动组件 -->
       <el-scrollbar class="scrollbar">
         <!-- 菜单组件 -->
-        <el-menu
-          text-color="#fff"
-          background-color="$base-menu-background"
-          active-text-color="yellowgreen"
-          router
-          :default-active="route.path"
-          :collapse="layoutSettingStore.fold"
-        >
+        <el-menu router :default-active="route.path" :collapse="layoutSettingStore.fold">
           <Menu :routesList="routesStore.routes"></Menu>
         </el-menu>
       </el-scrollbar>
