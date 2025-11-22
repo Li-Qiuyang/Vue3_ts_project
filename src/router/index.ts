@@ -3,7 +3,7 @@ import { constRoute } from "./routes";
 import nprogress from "nprogress";
 import "nprogress/nprogress.css";
 import useUserStore from "@/store/user";
-
+import setting from "@/setting";
 // 去掉进度条的圆圈
 nprogress.configure({ showSpinner: false });
 
@@ -20,7 +20,7 @@ let router = createRouter({
 
 // 全局前置路由守卫
 router.beforeEach(async (to, from, next) => {
-  document.title = `后台管理系统-${to.meta.title}` as string;
+  document.title = `${setting.title}-${to.meta.title}` as string;
   nprogress.start();
   const userStore = useUserStore();
   let token = userStore.token;

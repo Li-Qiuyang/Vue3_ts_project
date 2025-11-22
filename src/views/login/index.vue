@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="8" :xs="24">
         <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms">
-          <h3 class="title">欢迎来到云端商管平台！</h3>
+          <h3 class="title">欢迎来到{{ setting.title }}！</h3>
           <h2 class="signup">Sign Up</h2>
           <el-form-item prop="username">
             <el-input
@@ -48,13 +48,14 @@ import useUserStore from "@/store/user";
 import { useRouter, useRoute } from "vue-router";
 import getTime from "@/utils/time";
 let loginForms = ref();
+import setting from "@/setting";
 
 // 自定义表单检验规则
 const validatorName = (rules: any, value: any, callback: any) => {
-  if (value.length >= 5) {
+  if (value.length >= 1) {
     callback();
   } else {
-    callback(new Error("用户名长度不少于5位"));
+    callback(new Error("用户名长度不少于1位"));
   }
 };
 const validatorPass = (rules: any, value: any, callback: any) => {
@@ -76,8 +77,8 @@ let route = useRoute();
 const rememberMe = ref(false);
 const userStore = useUserStore();
 let loginForm = ref({
-  username: "admin",
-  password: "111111",
+  username: "",
+  password: "",
 });
 let loading = ref(false);
 const login = async () => {
@@ -96,7 +97,7 @@ const login = async () => {
   } catch (error: any) {
     loading.value = false;
     ElNotification({
-      title: error.message,
+      title: "登录失败",
       type: "error",
     });
   }
