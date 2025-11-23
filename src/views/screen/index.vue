@@ -9,33 +9,13 @@
           <Age class="age"></Age>
         </div>
         <div class="middle">
-          <div class="map">111</div>
-          <div class="feature">
-            <div class="feature-item">
-              <div class="title">未来30天游客量趋势图</div>
-              <img src="@/assets/images/screen_title_tag.png" alt="" />
-            </div>
-          </div>
+          <Map class="map"></Map>
+          <Feature class="feature"></Feature>
         </div>
         <div class="right">
-          <div class="tourist">
-            <div class="tourist-top">
-              <div class="title">热门景区排行</div>
-              <img src="@/assets/images/screen_title_tag.png" alt="" />
-            </div>
-          </div>
-          <div class="sex">
-            <div class="sex-top">
-              <div class="title">年度游客量对比</div>
-              <img src="@/assets/images/screen_title_tag.png" alt="" />
-            </div>
-          </div>
-          <div class="age">
-            <div class="age-top">
-              <div class="title">预约渠道数据统计</div>
-              <img src="@/assets/images/screen_title_tag.png" alt="" />
-            </div>
-          </div>
+          <HotPlace class="hot-place"></HotPlace>
+          <YearTourist class="year-tourist"></YearTourist>
+          <Data class="data"></Data>
         </div>
       </div>
     </div>
@@ -48,6 +28,12 @@ import Sex from "@/views/screen/sex.vue";
 import Age from "@/views/screen/age.vue";
 import Tourist from "@/views/screen/tourist.vue";
 import Top from "@/views/screen/top.vue";
+import Map from "@/views/screen/Map.vue";
+import Feature from "@/views/screen/feature.vue";
+import HotPlace from "@/views/screen/hotPlace.vue";
+import YearTourist from "@/views/screen/yearTourist.vue";
+import Data from "@/views/screen/data.vue";
+
 let time = ref("");
 let timer = ref(0);
 // 数据大屏自适应宽高的解决方法
@@ -133,14 +119,6 @@ onUnmounted(() => {
         }
         .feature {
           flex: 1;
-          display: flex;
-          color: #fff;
-          font-size: 20px;
-          .feature-item {
-            flex: 1;
-            background: url("@/assets/images/screen_main_IB.png") no-repeat;
-            background-size: 100% 100%;
-          }
         }
       }
       .right {
@@ -149,48 +127,14 @@ onUnmounted(() => {
         flex: 1;
         width: 100%;
         height: 1000px;
-        .tourist {
-          background: url("@/assets/images/screen_main_IB.png") no-repeat;
-          background-size: 100% 100%;
+        .hot-place {
           flex: 1.5;
-          margin-top: 20px;
-          .tourist-top {
-            color: #fff;
-            font-size: 20px;
-            padding-left: 10px;
-            .tourist-num {
-              display: flex;
-              justify-content: flex-end;
-              margin-right: 20px;
-              .number {
-                color: #ffb700;
-                font-family: "Times New Roman";
-                font-weight: bold;
-                margin: 0 6px;
-              }
-            }
-          }
         }
-        .sex {
+        .year-tourist {
           flex: 1;
-          background: url("@/assets/images/screen_main_IB.png") no-repeat;
-          background-size: 100% 100%;
-          margin: 20px 0;
-          .sex-top {
-            color: #fff;
-            font-size: 20px;
-            padding-left: 10px;
-          }
         }
-        .age {
+        .data {
           flex: 1;
-          background: url("@/assets/images/screen_main_IB.png") no-repeat;
-          background-size: 100% 100%;
-          .age-top {
-            color: #fff;
-            font-size: 20px;
-            padding-left: 10px;
-          }
         }
       }
     }

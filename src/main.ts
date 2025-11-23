@@ -11,8 +11,6 @@ import App from "@/App.vue";
 import "virtual:svg-icons-register";
 import router from "./router";
 
-import * as echarts from "echarts/core";
-
 const app = createApp(App);
 
 app.use(createPinia());
