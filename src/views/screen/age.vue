@@ -11,7 +11,6 @@
 import * as echarts from "echarts";
 import { onMounted, ref } from "vue";
 let echart = ref();
-
 onMounted(() => {
   let myChart = echarts.init(echart.value);
   myChart.setOption({
@@ -27,15 +26,15 @@ onMounted(() => {
       textStyle: {
         // 图例字体样式
         color: "#fff",
-        fontSize: 14,
+        fontSize: 12,
       },
     },
     series: [
       {
+        color: ["#8C6FC4", "#E4B64C", "#E57824", "#0B7A86", "#064190", "#75BBE6"],
         name: "年龄比例",
         type: "pie",
         radius: ["45%", "80%"],
-
         itemStyle: {
           borderRadius: 10,
           borderColor: "#fff",

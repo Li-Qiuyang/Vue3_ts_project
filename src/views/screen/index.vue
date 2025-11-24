@@ -128,7 +128,7 @@ onUnmounted(() => {
         width: 100%;
         height: 1000px;
         .hot-place {
-          flex: 1.5;
+          flex: 1.3;
         }
         .year-tourist {
           flex: 1;
