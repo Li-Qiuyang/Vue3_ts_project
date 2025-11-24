@@ -28,7 +28,7 @@ import Sex from "@/views/screen/sex.vue";
 import Age from "@/views/screen/age.vue";
 import Tourist from "@/views/screen/tourist.vue";
 import Top from "@/views/screen/top.vue";
-import Map from "@/views/screen/Map.vue";
+import Map from "@/views/screen/MAP/Map.vue";
 import Feature from "@/views/screen/feature.vue";
 import HotPlace from "@/views/screen/hotPlace.vue";
 import YearTourist from "@/views/screen/yearTourist.vue";
