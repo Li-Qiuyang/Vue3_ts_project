@@ -18,6 +18,7 @@
               :icon="row.isSale ? 'Bottom' : 'Top'"
               :title="row.isSale ? '下架' : '上架'"
               @click="handleOnSale(row)"
+              v-has="row"
             ></el-button>
             <el-button type="primary" icon="edit" title="编辑SKU" @click="editSku(row)"></el-button>
             <el-button

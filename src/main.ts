@@ -32,4 +32,7 @@ app.component("SvgIcon", SvgIcon);
 import Category from "@/components/Category/index.vue";
 app.component("Category", Category);
 
+// 自定义指令
+import { isHasButton } from "@/directive/has";
+app.directive("has", isHasButton);
 app.mount("#app");

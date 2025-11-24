@@ -8,7 +8,7 @@
       <el-scrollbar class="scrollbar">
         <!-- 菜单组件 -->
         <el-menu router :default-active="route.path" :collapse="layoutSettingStore.fold">
-          <Menu :routesList="routesStore.routes"></Menu>
+          <Menu :routesList="userStore.menuList"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
@@ -32,10 +32,11 @@ import Main from "@/layout/main/index.vue";
 import { useRoute } from "vue-router";
 import Tabbar from "@/layout/tabbar/index.vue";
 import useLayoutSettingStore from "@/store/setting";
-
+import useUserStore from "@/store/user";
 const layoutSettingStore = useLayoutSettingStore();
 
 const routesStore = useRoutesStore();
+const userStore = useUserStore();
 let route = useRoute();
 </script>
 
