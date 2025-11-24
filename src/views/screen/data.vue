@@ -9,13 +9,12 @@
 </template>
 
 <script setup lang="ts">
-import Title from "../bottom_left/components/Title.vue";
 import * as echarts from "echarts";
 import { ref, onMounted } from "vue";
 
 let charts = ref();
 const list1 = ref([
-  { value: 40, name: "大众点评 - 40%" },
+  { value: 40, name: "美团 - 40%" },
   { value: 10, name: "携程 - 10%" },
   { value: 20, name: "飞猪 - 20%" },
   { value: 30, name: "其他平台 - 30%" },

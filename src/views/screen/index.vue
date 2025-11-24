@@ -131,10 +131,10 @@ onUnmounted(() => {
           flex: 1.3;
         }
         .year-tourist {
-          flex: 1;
+          flex: 1.2;
         }
         .data {
-          flex: 1;
+          flex: 0.8;
         }
       }
     }

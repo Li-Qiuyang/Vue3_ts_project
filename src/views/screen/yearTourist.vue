@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import Title from "../bottom_left/components/Title.vue";
 import * as echarts from "echarts";
 import { ref, onMounted } from "vue";
 
@@ -39,7 +38,7 @@ onMounted(() => {
       top: "20%",
       left: "12%",
       right: "6%",
-      bottom: "12%",
+      bottom: "9%",
     },
     xAxis: [
       {
@@ -68,7 +67,6 @@ onMounted(() => {
     ],
     yAxis: [
       {
-        name: "",
         nameTextStyle: {
           color: "#fff",
           fontSize: 12,
@@ -79,7 +77,10 @@ onMounted(() => {
           show: false,
         },
         axisLine: {
-          show: false,
+          show: true,
+          lineStyle: {
+            color: "rgb(41,188,245)",
+          },
         },
         axisLabel: {
           show: true,
