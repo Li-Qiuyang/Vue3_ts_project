@@ -10,6 +10,26 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
 import * as echarts from "echarts";
+
+function getNext7Days() {
+  const result = [];
+  const today = new Date();
+
+  for (let i = 0; i < 7; i++) {
+    let d = new Date(today);
+    d.setDate(today.getDate() + i);
+
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+
+    result.push(`${month}-${day}`);
+  }
+
+  return result;
+}
+
+let dateArr = getNext7Days();
+
 let line = ref();
 onMounted(() => {
   let myChart = echarts.init(line.value);
@@ -23,7 +43,7 @@ onMounted(() => {
       splitLine: {
         show: false,
       },
-      data: ["10/09", "10/10", "10/11", "10/12", "10/13", "10/14", "10/15"],
+      data: dateArr,
       axisLine: {
         show: true,
         // lineStyle: {
@@ -35,6 +55,9 @@ onMounted(() => {
         fontSize: 14,
         color: "#7ec7ff",
         padding: 16,
+      },
+      axisTick: {
+        show: false,
       },
     },
     yAxis: {

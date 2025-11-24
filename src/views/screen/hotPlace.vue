@@ -54,17 +54,15 @@ onMounted(() => {
     },
     xAxis: [
       {
-        show: true,
+        show: false,
       },
       {
         show: false,
-        splitLine: {
-          show: false,
-        },
       },
     ],
     yAxis: [
       {
+        type: "category",
         show: true,
         data: yData,
         offset: 40,
@@ -113,7 +111,6 @@ onMounted(() => {
     ],
     series: [
       {
-        name: "进度",
         show: true,
         type: "bar",
         barGap: "-100%",

@@ -60,6 +60,7 @@ onMounted(() => {
           show: false,
         },
         axisTick: {
+          // 隐藏刻度线
           show: false,
         },
         data: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
@@ -67,11 +68,6 @@ onMounted(() => {
     ],
     yAxis: [
       {
-        nameTextStyle: {
-          color: "#fff",
-          fontSize: 12,
-          padding: [0, 60, 0, 0],
-        },
         type: "value",
         splitLine: {
           show: false,
@@ -89,38 +85,30 @@ onMounted(() => {
             fontSize: 14,
           },
         },
-        axisTick: {
-          show: false,
-        },
       },
     ],
     series: [
       {
-        name: "2021",
+        name: "2022",
         type: "line",
-        symbol: "circle",
         smooth: true,
         lineStyle: {
-          normal: {
-            width: 1,
-            color: "#00ffa2", // 线条颜色
-          },
+          width: 1,
+          color: "#00ffa2", // 线条颜色
         },
         showSymbol: false,
         itemStyle: {
-          normal: {
-            color: "#00ffa2", //拐点颜色
-            label: {
-              show: true, //开启显示
-              color: "#fff",
-              position: "top", //在上方显示
-              formatter: function (res: any) {
-                if (res.value) {
-                  return res.value;
-                } else {
-                  return 0;
-                }
-              },
+          color: "#00ffa2", //拐点颜色
+          label: {
+            show: true, //开启显示
+            color: "#fff",
+            position: "top", //在上方显示
+            formatter: function (res: any) {
+              if (res.value) {
+                return res.value;
+              } else {
+                return 0;
+              }
             },
           },
         },
@@ -148,31 +136,27 @@ onMounted(() => {
         data: ["130", "70", "130", "200", "290", "580", "156", "246", "144", "435", "78", "257"],
       },
       {
-        name: "2022",
+        name: "2023",
         type: "line",
-        showSymbol: false,
         symbol: "circle", // 默认是空心圆（中间是白色的），改成实心圆
+        showSymbol: false,
         smooth: true,
         lineStyle: {
-          normal: {
-            width: 1,
-            color: "#3D84F7", // 线条颜色
-          },
+          width: 1,
+          color: "#3D84F7", // 线条颜色
         },
         itemStyle: {
-          normal: {
-            color: "#3D84F7", //拐点颜色
-            label: {
-              show: true, //开启显示
-              color: "#fff",
-              position: "top", //在上方显示
-              formatter: function (res: any) {
-                if (res.value) {
-                  return res.value;
-                } else {
-                  return 0;
-                }
-              },
+          color: "#3D84F7", //拐点颜色
+          label: {
+            show: true, //开启显示
+            color: "#fff",
+            position: "top", //在上方显示
+            formatter: function (res: any) {
+              if (res.value) {
+                return res.value;
+              } else {
+                return 0;
+              }
             },
           },
         },
@@ -200,31 +184,27 @@ onMounted(() => {
         data: ["542", "230", "170", "510", "210", "420", "145", "95", "146", "357", "83", "452"],
       },
       {
-        name: "2023",
+        name: "2024",
         type: "line",
         showSymbol: false,
         symbol: "circle",
         smooth: true,
         lineStyle: {
-          normal: {
-            width: 1,
-            color: "#EA02A5", // 线条颜色
-          },
+          width: 1,
+          color: "#EA02A5", // 线条颜色
         },
         itemStyle: {
-          normal: {
-            color: "#EA02A5", //拐点颜色
-            label: {
-              show: true, //开启显示
-              color: "#fff",
-              position: "top", //在上方显示
-              formatter: function (res: any) {
-                if (res.value) {
-                  return res.value;
-                } else {
-                  return 0;
-                }
-              },
+          color: "#EA02A5", //拐点颜色
+          label: {
+            show: true, //开启显示
+            color: "#fff",
+            position: "top", //在上方显示
+            formatter: function (res: any) {
+              if (res.value) {
+                return res.value;
+              } else {
+                return 0;
+              }
             },
           },
         },

@@ -36,24 +36,24 @@ onMounted(() => {
       },
     },
     tooltip: {
+      // 提示框，触发方式为“item”，即鼠标悬停在扇区上时显示
       trigger: "item",
     },
     // 可动态生成颜色集合
     color: [
       "rgba(241, 196, 71, 1)",
-      null,
+      "transparent",
       "rgba(251, 109, 48, 1)",
-      null,
+      "transparent",
       "rgba(239, 61, 119, 1)",
-      null,
+      "transparent",
       "#007AFE",
-      null,
+      "transparent",
     ],
     series: [
       {
-        name: "项目规模占比",
         type: "pie",
-        radius: ["60%", "70%"],
+        radius: ["60%", "70%"], //内半径为 60%，外半径为 70%
         label: {
           show: true,
           color: "#fff",
@@ -62,6 +62,7 @@ onMounted(() => {
         data: addBlank(list1.value),
       },
       {
+        // 外层“细圈”效果
         type: "pie",
         radius: ["75%", "75.5%"],
         label: {
