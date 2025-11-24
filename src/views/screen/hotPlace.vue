@@ -187,7 +187,7 @@ onMounted(() => {
   .title {
     color: #fff;
     padding-left: 10px;
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .header {

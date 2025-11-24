@@ -92,7 +92,7 @@ const addBlank = (list: any) => {
   background-size: 100% 100%;
   .top {
     color: #fff;
-    font-size: 20px;
+    font-size: 22px;
     padding-left: 10px;
   }
   .chart {

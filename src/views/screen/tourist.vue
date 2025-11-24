@@ -273,7 +273,7 @@ const pie = () => {
     font-size: 20px;
     padding-left: 10px;
     .title {
-      font-size: 25px;
+      font-size: 22px;
     }
     .tourist-num {
       display: flex;

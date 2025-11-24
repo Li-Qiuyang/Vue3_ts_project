@@ -263,7 +263,7 @@ onMounted(() => {
   margin: 20px 0;
   .top {
     color: #fff;
-    font-size: 20px;
+    font-size: 22px;
     padding-left: 10px;
   }
   .chart {

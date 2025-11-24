@@ -78,7 +78,7 @@ onMounted(() => {
   background-size: 100% 100%;
   .age-top {
     color: #fff;
-    font-size: 20px;
+    font-size: 22px;
     padding-left: 10px;
   }
   .charts {

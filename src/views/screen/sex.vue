@@ -79,7 +79,7 @@ onMounted(() => {
     color: #fff;
     font-size: 20px;
     padding-left: 10px;
-    font-size: 24px;
+    font-size: 22px;
   }
   .sex-img {
     display: flex;
